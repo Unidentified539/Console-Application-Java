@@ -1,5 +1,4 @@
-# console-java-simple
-
+# Console-Application-Java
 A simple Java application to encrypt and decrypt text in the terminal and by file. 
 
 How To: 
