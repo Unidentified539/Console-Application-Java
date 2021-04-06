@@ -8,4 +8,4 @@ How To:
                ```cd Console-Application-Java```
                ```sudo bash install.sh```
        
-       Windows: Comming Soon 
+       Windows: Comming Soon
