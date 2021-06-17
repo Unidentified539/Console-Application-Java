@@ -17,6 +17,10 @@ public class App {
         application();
     }
 
+    public static void reset() throws IOException {
+        application();
+    }
+
     public static void application() throws IOException {
         Scanner sc = new Scanner(System.in);
 
@@ -109,16 +113,24 @@ public class App {
         return myEncryptedText;
     }
 
-    public static String readFile(String filePath) throws FileNotFoundException, FileNotFoundException {
+    public static String readFile(String filePath) throws IOException {
 
-        File myObj = new File(filePath);
-        Scanner myReader = new Scanner(myObj);
-        while (myReader.hasNextLine()) {
-            String data = myReader.nextLine();
-            return data;
+        try {
+            File myObj = new File(filePath);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                return data;
+            }
+            myReader.close();
+            return filePath;
         }
-        myReader.close();
-        return filePath;
+        catch (FileNotFoundException e) {
+            System.out.println("No such file or directory");
+            System.out.println("Restarting...");
+            reset();
+        }
+        return null;
     }
 
     public static void writeToFile(String filepath, Object writeThis) {
@@ -127,7 +139,6 @@ public class App {
             myWriter.write(String.valueOf(writeThis));
             myWriter.close();
         } catch (IOException e) {
-            System.out.println("An error occurred.");
             e.printStackTrace();
         }
     }
